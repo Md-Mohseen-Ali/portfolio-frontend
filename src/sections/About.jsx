@@ -124,7 +124,7 @@ function About() {
 
             {/* 🔥 Floating Label */}
             <div className="absolute -bottom-5 left-1/2 -translate-x-1/2 px-4 py-2 bg-indigo-500/20 border border-indigo-400/40 rounded-lg text-sm backdrop-blur-md">
-              Java & Full Stack Developer
+              Java Developer Enthusiast
             </div>
 
           </motion.div>
