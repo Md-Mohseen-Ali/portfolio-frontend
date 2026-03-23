@@ -1,6 +1,6 @@
 import { motion } from "framer-motion"
 import { useState } from "react"
-import { GitHub, LinkedIn } from "lucide-react"
+import { FaGithub, FaLinkedin } from "react-icons/fa"
 function Contact() {
   const [form, setForm] = useState({
     name: "",
@@ -178,7 +178,7 @@ function Contact() {
       whileHover={{ scale: 1.2, rotate: 5 }}
       className="p-3 rounded-full bg-indigo-500/20 border border-indigo-400/30 hover:bg-indigo-500/40 transition"
     >
-      <Linkedin size={22} />
+      <FaLinkedin size={22} />
     </motion.a>
 
     {/* 🔗 GITHUB */}
@@ -188,7 +188,7 @@ function Contact() {
       whileHover={{ scale: 1.2, rotate: -5 }}
       className="p-3 rounded-full bg-indigo-500/20 border border-indigo-400/30 hover:bg-indigo-500/40 transition"
     >
-      <Github size={22} />
+      <FaGithub size={22} />
     </motion.a>
 
   </div>
