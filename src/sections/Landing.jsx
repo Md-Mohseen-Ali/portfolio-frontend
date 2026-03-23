@@ -86,7 +86,7 @@ function Landing() {
 
           {/* Name */}
           <h1 className="hero-title text-6xl font-bold">
-            {"Hi, I'm Ayan".split(" ").map((word, i) => (
+            {"Hi, I'm Mohseen".split(" ").map((word, i) => (
               <span key={i} className="inline-block mr-2 overflow-hidden">
                 <span className="inline-block reveal">{word}</span>
               </span>
