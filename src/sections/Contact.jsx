@@ -1,6 +1,6 @@
 import { motion } from "framer-motion"
 import { useState } from "react"
-import { Github, Linkedin } from "lucide-react"
+import { GitHub, Linkedin } from "lucide-react"
 function Contact() {
   const [form, setForm] = useState({
     name: "",
