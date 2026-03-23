@@ -1,10 +1,11 @@
 import { useState, useEffect } from "react"
-import { motion } from "framer-motion"
+import { motion, useMotionValue, useTransform } from "framer-motion"
 import ResumeModal from "../components/ResumeModal"
 
 function Navbar() {
   const [active, setActive] = useState("home")
   const [openResume, setOpenResume] = useState(false)
+  const [scrolled, setScrolled] = useState(false)
 
   const navItems = [
     { name: "Home", id: "home" },
@@ -20,6 +21,8 @@ function Navbar() {
   // 🔥 SCROLL DETECTION
   useEffect(() => {
     const handleScroll = () => {
+      setScrolled(window.scrollY > 50)
+
       const sections = navItems.map((item) =>
         document.getElementById(item.id)
       )
@@ -42,24 +45,42 @@ function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
+  // 🔥 CURSOR GLOW
+  const mouseX = useMotionValue(0)
+  const mouseY = useMotionValue(0)
+
+  const glowX = useTransform(mouseX, (v) => v - 150)
+  const glowY = useTransform(mouseY, (v) => v - 150)
+
+  const handleMouseMove = (e) => {
+    mouseX.set(e.clientX)
+    mouseY.set(e.clientY)
+  }
+
   return (
     <>
-      {/* 🔥 NAVBAR */}
       <motion.nav
+        onMouseMove={handleMouseMove}
         initial={{ y: -80, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.6 }}
-        className="fixed top-0 left-0 w-full bg-[#0f172a]/70 backdrop-blur-lg z-50 border-b border-indigo-400/10"
+        className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${
+          scrolled
+            ? "bg-[#0f172a]/80 backdrop-blur-xl shadow-lg py-2"
+            : "bg-transparent py-4"
+        }`}
       >
-        {/* 🔥 SOFT GLOW */}
-        <div className="absolute inset-0 -z-10 bg-indigo-500/5 blur-2xl"></div>
+        {/* 🔥 CURSOR SPOTLIGHT */}
+        <motion.div
+          style={{ left: glowX, top: glowY }}
+          className="fixed w-[300px] h-[300px] bg-indigo-500/10 blur-3xl rounded-full pointer-events-none z-0"
+        />
 
-        <div className="max-w-6xl mx-auto flex justify-between items-center px-6 py-4">
+        <div className="max-w-6xl mx-auto flex justify-between items-center px-6 relative z-10">
 
           {/* LOGO */}
           <motion.h1
-            whileHover={{ scale: 1.05 }}
-            className="text-xl font-bold tracking-wide"
+            whileHover={{ scale: 1.08 }}
+            className="text-xl font-bold tracking-wide cursor-pointer"
           >
             Ayan.dev
           </motion.h1>
@@ -70,8 +91,9 @@ function Navbar() {
             {navItems.map((item) => (
               <li key={item.id} className="relative group">
 
-                <a
+                <motion.a
                   href={`#${item.id}`}
+                  whileHover={{ scale: 1.1 }}
                   className={`transition duration-300 ${
                     active === item.id
                       ? "text-indigo-400"
@@ -79,9 +101,9 @@ function Navbar() {
                   }`}
                 >
                   {item.name}
-                </a>
+                </motion.a>
 
-                {/* 🔥 ANIMATED UNDERLINE */}
+                {/* 🔥 ACTIVE UNDERLINE */}
                 {active === item.id && (
                   <motion.div
                     layoutId="underline"
@@ -89,7 +111,7 @@ function Navbar() {
                   />
                 )}
 
-                {/* 🔥 HOVER LINE */}
+                {/* 🔥 HOVER EFFECT */}
                 <span className="absolute left-0 -bottom-1 h-[2px] w-0 bg-white transition-all duration-300 group-hover:w-full"></span>
 
               </li>
@@ -97,10 +119,19 @@ function Navbar() {
 
           </ul>
 
-          {/* 🔥 RESUME BUTTON */}
+          {/* 🔥 MAGNETIC BUTTON */}
           <motion.button
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.95 }}
+            onMouseMove={(e) => {
+              const rect = e.currentTarget.getBoundingClientRect()
+              const x = e.clientX - rect.left - rect.width / 2
+              const y = e.clientY - rect.top - rect.height / 2
+              e.currentTarget.style.transform = `translate(${x * 0.2}px, ${y * 0.2}px)`
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.transform = "translate(0,0)"
+            }}
             onClick={() => setOpenResume(true)}
             className="px-5 py-2 bg-indigo-500 rounded-lg hover:bg-indigo-600 transition shadow-lg shadow-indigo-500/20"
           >
@@ -110,7 +141,7 @@ function Navbar() {
         </div>
       </motion.nav>
 
-      {/* 🔥 RESUME MODAL */}
+      {/* MODAL */}
       <ResumeModal
         isOpen={openResume}
         onClose={() => setOpenResume(false)}
