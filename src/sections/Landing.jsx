@@ -110,7 +110,7 @@ function Landing() {
             transition={{ delay: 0.6 }}
             className="text-gray-400 mt-6"
           >
-            I craft scalable backend systems and immersive frontend experiences.
+            A developer who turns ideas into real-world applications.
           </motion.p>
 
           {/* Buttons */}
