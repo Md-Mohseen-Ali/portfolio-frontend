@@ -81,19 +81,26 @@ function About() {
           <h2 className="about-item text-5xl font-bold mb-6">
             About <span className="text-indigo-400">Me</span>
           </h2>
+              
+
 
           <p className="about-item text-gray-300 mb-4">
-            I'm a Full Stack Java Developer focused on building scalable systems 
-            and immersive user experiences.
+            My journey into technology began with my Diploma in Computer Engineering, 
+            where I built a strong foundation in programming and problem-solving.
+            During this time, I explored different technologies, but Java naturally stood out to me. The more I worked with it, 
+            the more it pulled me toward backend development and system design.
+
           </p>
 
           <p className="about-item text-gray-400 mb-4">
-            I specialize in Spring Boot and React, designing applications that 
-            feel smooth, responsive, and production-ready.
+            Currently, I am pursuing my B.Tech, where I am deepening my understanding of full-stack development.
+            I focus on building scalable applications using Java and Spring Boot, along with modern frontend technologies.
+
           </p>
 
           <p className="about-item text-gray-500">
-            I don’t just build apps — I craft experiences.
+           Through continuous learning and real-world projects,
+           I am shaping myself into a full-stack developer with a strong inclination toward backend systems.
           </p>
         </div>
 
