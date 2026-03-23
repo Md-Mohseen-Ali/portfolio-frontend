@@ -88,7 +88,7 @@ function About() {
 
           <p className="about-item text-gray-400 mb-4 leading-relaxed">
             During this time, I explored different technologies, but Java naturally stood out to me.
-            The more I worked with it, the more it pulled me toward backend development and system design.
+            The more I worked with it, the more it pulled me toward backend development.
           </p>
 
           <p className="about-item text-gray-400 mb-4 leading-relaxed">
@@ -98,7 +98,7 @@ function About() {
 
           <p className="about-item text-gray-500 leading-relaxed">
             Through continuous learning and real-world projects,
-            I am shaping myself into a full-stack developer with a strong inclination toward backend systems.
+            I am shaping myself into a Java developer with a strong inclination toward backend systems.
           </p>
 
         </div>
