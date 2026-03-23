@@ -55,19 +55,22 @@ function About() {
       ref={aboutRef}
       className="min-h-screen flex items-center justify-center px-6 relative overflow-hidden"
     >
-      {/* 🔥 Background Glow */}
-      <motion.div
-        animate={{
-          x: [0, 100, -100, 0],
-          y: [0, -50, 50, 0],
-        }}
-        transition={{
-          duration: 10,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
-        className="absolute w-[500px] h-[500px] bg-indigo-500/20 blur-3xl rounded-full"
-      />
+      {/* 🔥 SOFT LAYERED GLOW BACKGROUND */}
+      <div className="absolute inset-0 -z-10">
+
+        <motion.div
+          animate={{ x: [0, 80, -80, 0], y: [0, -40, 40, 0] }}
+          transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute top-20 left-10 w-[400px] h-[400px] bg-indigo-500/20 blur-[120px] rounded-full"
+        />
+
+        <motion.div
+          animate={{ x: [0, -60, 60, 0], y: [0, 40, -40, 0] }}
+          transition={{ duration: 14, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute bottom-20 right-10 w-[400px] h-[400px] bg-purple-500/20 blur-[120px] rounded-full"
+        />
+
+      </div>
 
       <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-16 items-center relative z-10">
 
@@ -119,10 +122,10 @@ function About() {
               className="w-80 h-[420px] object-cover rounded-2xl shadow-[0_20px_60px_rgba(0,0,0,0.6)] border border-indigo-400/20"
             />
 
-            {/* 🔥 Glow Behind */}
+            {/* 🔥 IMAGE GLOW */}
             <div className="absolute inset-0 -z-10 bg-indigo-500/20 blur-3xl rounded-2xl"></div>
 
-            {/* 🔥 Floating Label */}
+            {/* 🔥 FLOATING LABEL */}
             <div className="absolute -bottom-5 left-1/2 -translate-x-1/2 px-4 py-2 bg-indigo-500/20 border border-indigo-400/40 rounded-lg text-sm backdrop-blur-md">
               Java Developer Enthusiast
             </div>
