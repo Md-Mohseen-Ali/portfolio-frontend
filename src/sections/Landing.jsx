@@ -100,7 +100,7 @@ function Landing() {
             transition={{ delay: 0.3, type: "spring" }}
             className="text-xl md:text-2xl text-gray-300 mt-4"
           >
-            Full Stack Java Developer
+           Java Developer
           </motion.h2>
 
           {/* Tagline */}
