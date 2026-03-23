@@ -117,36 +117,7 @@ function About() {
             <div className="absolute inset-0 -z-10 bg-indigo-500/20 blur-2xl rounded-2xl"></div>
           </motion.div>
 
-          {/* 🔥 FLOATING CARD */}
-          <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="absolute bottom-[-40px] backdrop-blur-xl bg-white/10 border border-indigo-400/20 rounded-2xl p-5 shadow-xl"
-          >
-            <h3 className="text-sm font-semibold mb-3 text-indigo-300 text-center">
-              Tech Stack
-            </h3>
-
-            <div className="flex flex-wrap gap-2 justify-center">
-              {[
-                "Java",
-                "Spring Boot",
-                "React",
-                "MySQL",
-                "REST API",
-                "Git",
-              ].map((skill, index) => (
-                <motion.span
-                  key={index}
-                  whileHover={{ scale: 1.15 }}
-                  className="px-3 py-1 rounded-md bg-indigo-500/20 border border-indigo-400/40 text-xs text-white"
-                >
-                  {skill}
-                </motion.span>
-              ))}
-            </div>
-          </motion.div>
+          
 
         </div>
 
