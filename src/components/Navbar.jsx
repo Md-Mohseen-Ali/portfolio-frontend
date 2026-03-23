@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react"
+import { motion } from "framer-motion"
 import ResumeModal from "../components/ResumeModal"
 
 function Navbar() {
@@ -16,7 +17,7 @@ function Navbar() {
     { name: "Contact", id: "contact" },
   ]
 
-  // 🔥 SCROLL ACTIVE SECTION DETECTION
+  // 🔥 SCROLL DETECTION
   useEffect(() => {
     const handleScroll = () => {
       const sections = navItems.map((item) =>
@@ -38,25 +39,40 @@ function Navbar() {
     }
 
     window.addEventListener("scroll", handleScroll)
-
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
   return (
     <>
-      <nav className="fixed top-0 left-0 w-full bg-[#0f172a]/80 backdrop-blur-md z-50 shadow-md">
+      {/* 🔥 NAVBAR */}
+      <motion.nav
+        initial={{ y: -80, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.6 }}
+        className="fixed top-0 left-0 w-full bg-[#0f172a]/70 backdrop-blur-lg z-50 border-b border-indigo-400/10"
+      >
+        {/* 🔥 SOFT GLOW */}
+        <div className="absolute inset-0 -z-10 bg-indigo-500/5 blur-2xl"></div>
+
         <div className="max-w-6xl mx-auto flex justify-between items-center px-6 py-4">
 
-          {/* Logo */}
-          <h1 className="text-xl font-bold">Md Mohseen Ali</h1>
+          {/* LOGO */}
+          <motion.h1
+            whileHover={{ scale: 1.05 }}
+            className="text-xl font-bold tracking-wide"
+          >
+            Ayan.dev
+          </motion.h1>
 
-          {/* Nav Links */}
-          <ul className="hidden md:flex gap-6">
+          {/* NAV LINKS */}
+          <ul className="hidden md:flex gap-8 relative">
+
             {navItems.map((item) => (
-              <li key={item.id}>
+              <li key={item.id} className="relative group">
+
                 <a
                   href={`#${item.id}`}
-                  className={`cursor-pointer transition ${
+                  className={`transition duration-300 ${
                     active === item.id
                       ? "text-indigo-400"
                       : "text-gray-300 hover:text-white"
@@ -64,22 +80,35 @@ function Navbar() {
                 >
                   {item.name}
                 </a>
+
+                {/* 🔥 ANIMATED UNDERLINE */}
+                {active === item.id && (
+                  <motion.div
+                    layoutId="underline"
+                    className="absolute left-0 -bottom-1 h-[2px] w-full bg-indigo-400 rounded"
+                  />
+                )}
+
+                {/* 🔥 HOVER LINE */}
+                <span className="absolute left-0 -bottom-1 h-[2px] w-0 bg-white transition-all duration-300 group-hover:w-full"></span>
+
               </li>
             ))}
+
           </ul>
 
-          {/* 🔥 Resume Button (MODAL) */}
-          <button
-  onClick={() => {
-    console.log("clicked")
-    setOpenResume(true)
-  }}
-  className="px-4 py-2 bg-indigo-500 rounded-lg hover:bg-indigo-600 transition"
->
-  Resume
-</button>
+          {/* 🔥 RESUME BUTTON */}
+          <motion.button
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.95 }}
+            onClick={() => setOpenResume(true)}
+            className="px-5 py-2 bg-indigo-500 rounded-lg hover:bg-indigo-600 transition shadow-lg shadow-indigo-500/20"
+          >
+            Resume
+          </motion.button>
+
         </div>
-      </nav>
+      </motion.nav>
 
       {/* 🔥 RESUME MODAL */}
       <ResumeModal
