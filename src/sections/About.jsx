@@ -108,7 +108,7 @@ function About() {
             whileHover={{ scale: 1.05 }}
           >
             <img
-              src="/your-image.jpg"   // 👉 PUT IMAGE IN PUBLIC
+              src="/your-image.JPG"   // 👉 PUT IMAGE IN PUBLIC
               alt="Ayan"
               className="w-72 h-80 object-cover rounded-2xl shadow-2xl border border-indigo-400/20"
             />
