@@ -1,6 +1,6 @@
 import { motion } from "framer-motion"
 import { useState } from "react"
-
+import { Github, Linkedin } from "lucide-react"
 function Contact() {
   const [form, setForm] = useState({
     name: "",
@@ -157,6 +157,42 @@ function Contact() {
             </motion.p>
           )}
         </motion.form>
+
+        {/* 🔥 CONNECT SECTION */}
+<motion.div
+  initial={{ opacity: 0, y: 40 }}
+  whileInView={{ opacity: 1, y: 0 }}
+  transition={{ delay: 0.3 }}
+  className="mt-10 text-center"
+>
+  <p className="text-gray-400 mb-4">
+    Let's Connect
+  </p>
+
+  <div className="flex justify-center gap-6">
+
+    {/* 🔗 LINKEDIN */}
+    <motion.a
+      href="https://linkedin.com/in/md-mohseen-ali-"   // 🔥 PUT YOUR LINK
+      target="_blank"
+      whileHover={{ scale: 1.2, rotate: 5 }}
+      className="p-3 rounded-full bg-indigo-500/20 border border-indigo-400/30 hover:bg-indigo-500/40 transition"
+    >
+      <Linkedin size={22} />
+    </motion.a>
+
+    {/* 🔗 GITHUB */}
+    <motion.a
+      href="https://github.com/Md-Mohseen-Ali"   // 🔥 PUT YOUR LINK
+      target="_blank"
+      whileHover={{ scale: 1.2, rotate: -5 }}
+      className="p-3 rounded-full bg-indigo-500/20 border border-indigo-400/30 hover:bg-indigo-500/40 transition"
+    >
+      <Github size={22} />
+    </motion.a>
+
+  </div>
+</motion.div>
       </div>
     </section>
   )
