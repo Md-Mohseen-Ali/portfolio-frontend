@@ -51,7 +51,7 @@ function Welcome({ onEnter }) {
         transition={{ delay: 1 }}
         className="text-5xl md:text-6xl font-bold mb-6 z-10"
       >
-        Welcome, Ayan
+        Welcome...
       </motion.h2>
 
       {/* 🔥 Instruction */}
