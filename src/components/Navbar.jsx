@@ -82,7 +82,7 @@ function Navbar() {
             whileHover={{ scale: 1.08 }}
             className="text-xl font-bold tracking-wide cursor-pointer"
           >
-            Ayan.dev
+            Mohseen
           </motion.h1>
 
           {/* NAV LINKS */}
