@@ -114,7 +114,7 @@ function About() {
             whileHover={{ scale: 1.05 }}
           >
             <img
-              src="/your-image.JPG"
+              src="/your-image.jpeg"
               alt="Ayan"
               className="w-80 h-[420px] object-cover rounded-2xl shadow-[0_20px_60px_rgba(0,0,0,0.6)] border border-indigo-400/20"
             />
